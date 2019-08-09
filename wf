@@ -1,0 +1,17 @@
+import pyowm
+city = str(input("Please, type your city:"))
+owm = pyowm.OWM('your owm API')  # You MUST provide a valid API key
+observation = owm.weather_at_place(city)
+w = observation.get_weather()
+# Weather details
+print("Weather in " + city + ":")
+wind = w.get_wind()["speed"]
+hum = w.get_humidity()            
+temp = w.get_temperature('celsius')["temp"]
+status = w.get_status()
+dstatus = w.get_detailed_status()
+print("  Wind speed :  " + str(wind))
+print("  Humidity :  " + str(hum))
+print("  Tempereture :  " + str(temp) + " in celsius")
+print("  Status :  " + str(status))
+print("  Detailed status :  " + str(dstatus))
